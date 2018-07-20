@@ -1,7 +1,7 @@
 body {
   background: #222222;
   color: #ddddcc;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Josefin Slab', serif;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -43,7 +43,7 @@ header .error {
 }
 
 input[type=text] {
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Josefin Slab', serif;
   display: inline-block;
   font-size: 1rem;
   color: #ddddcc;
