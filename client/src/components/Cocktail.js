@@ -13,7 +13,7 @@ class Cocktail extends React.Component {
 
     buildDetails () {
         const { details } = this.props;
-        let glass = () => (<p>glass: {details.glass}</p>)
+        let glass = () => (<p className="glass">glass: {details.glass}</p>)
         let ingredients = () => {
             return (
             <ul>

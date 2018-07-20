@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import {
     REQUEST_DRINKS,
     RECEIVE_DRINKS,
-    EXPAND_DRINK 
+    EXPAND_DRINK,
+    FETCH_DRINKS_FAILURE,
 } from '../actions/drinksActions';
 
 
@@ -29,12 +30,18 @@ function drinksFromAPI(state = drinksInitState, action) {
         case RECEIVE_DRINKS:
             return Object.assign({}, state, {
             isFetching: false,
-            items: action.drinks
+            items: action.drinks,
+            message: action.message,
+            whichExpanded: -1
             });
         case EXPAND_DRINK:
             return Object.assign({}, state, {
             whichExpanded: action.drinkIdx
             });
+        case FETCH_DRINKS_FAILURE:
+            return Object.assign({}, state, {
+            message: action.message
+            })
         default:
         return state;
     }

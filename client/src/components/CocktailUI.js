@@ -31,11 +31,12 @@ class CocktailUI extends React.Component {
         const { value, onSubmit, drinks, selectCocktail } = this.props;
         const cocktails = this.buildCocktails(drinks, selectCocktail);
         return (
-        <div>
+        <div className="cocktail-ui-container">
             <header className="header">
                 <h1>Cocktail Guide</h1>
+                <div className="error">{drinks.message}</div>
                 <form 
-                    
+                    className="search-cocktails"
                     onSubmit={e => { e.preventDefault(); onSubmit(this.refs.drinkInput.value);} }
                     >
                     <label>Search Cocktails: </label>

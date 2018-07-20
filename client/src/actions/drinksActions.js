@@ -5,6 +5,7 @@ export const EXPAND_DRINK = 'EXPAND_DRINK';
 function receiveDrinks(query, json) {
     return {
         type: RECEIVE_DRINKS,
+        message: '',
         query,
         drinks: json.drinks.map(item => buildDrink(item) ) 
     }
@@ -48,10 +49,29 @@ export function fetchDrinks(query) {
     return dispatch => {
         dispatch(requestDrinks(query))
         return fetch(uri)
+        .then(handleErrors)
         .then(response => response.json())
-        // need receive drinks success, error, etc
-        .then(json => dispatch(receiveDrinks(query, json)))
+        .then(json => {
+            dispatch(receiveDrinks(query, json));
+        })
+        .catch(error => dispatch(fetchDrinksFailure(query, error)))
     }
+}
+
+export const FETCH_DRINKS_FAILURE = 'FETCH_DRINKS_FAILURE';
+
+const fetchDrinksFailure = (query, error) => ({
+  type: FETCH_DRINKS_FAILURE,
+  payload: { error },
+  message: `no match for "${query}"`,
+  query
+});
+
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
 }
 
 export function expandDrink(drinkIdx) {
