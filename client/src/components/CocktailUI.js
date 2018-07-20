@@ -32,11 +32,17 @@ class CocktailUI extends React.Component {
         const cocktails = this.buildCocktails(drinks, selectCocktail);
         return (
         <div>
-            <form 
-                onSubmit={e => { e.preventDefault(); onSubmit(this.refs.drinkInput.value);} }
-                >
-                <input ref="drinkInput" type="text"></input>
-            </form>
+            <header className="header">
+                <h1>Cocktail Guide</h1>
+                <form 
+                    
+                    onSubmit={e => { e.preventDefault(); onSubmit(this.refs.drinkInput.value);} }
+                    >
+                    <label>Search Cocktails: </label>
+                    <input ref="drinkInput" type="text"></input>
+                    <i></i>
+                </form>
+            </header>
             <div className="cocktails">
                 {cocktails}
             </div>

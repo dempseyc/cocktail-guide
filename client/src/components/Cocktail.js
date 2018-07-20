@@ -1,53 +1,75 @@
 import React from "react";
+import "../styles/Cocktail.css"
 
 class Cocktail extends React.Component {
     constructor (props) {
         super(props);
         this.expand = this.expand.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.buildExtras();
+        this.buildDetails();
+        this.classNames = ['cocktail'];
+        this.detailClassNames = ['details', 'anim-collapse'];
     }
 
-    buildExtras () {
+    buildDetails () {
         const { details } = this.props;
-        let ingredients = details.ingredients.map((i,idx) => (
-            <p key={idx}>{i.ingredient}, {i.measure}</p>
-        ))
-        let arr = [ingredients, details.glass, details.instructions];
-        this.extras = arr.map(detail => (
-            <p>{detail}</p>
-        ))
-    }
-
-    componentDidUpdate () {
-        if (this.props.whichExpanded === this.props.idx) {
-            this.expand();
-        } else {
-            this.collapse()
+        let glass = () => (<p>glass: {details.glass}</p>)
+        let ingredients = () => {
+            return (
+            <ul>
+            {details.ingredients.map((i,idx) => {
+                return (
+                <li key={idx}>{i.ingredient}, {i.measure}</li>
+                )
+            })}
+            </ul>
+            )
+        };
+        let imageStyle = {
+            backgroundImage: `url(${details.image})`,
         }
+        this.details = () => (
+            <div key={`dt-${this.props.idx}`} className={this.detailClassNames.join(' ')}>
+                <div className="ingredients">
+                    {ingredients()}
+                    {glass()}
+                </div>
+                <div className="image" style={imageStyle}></div>
+                <div className="instructions">{details.instructions}</div>
+            </div>
+        );
     }
 
     expand () {
         this.expanded = true;
-        this.showExpansion = this.extras;
+        this.detailClassNames = ['details', 'anim-expand'];
     }
 
     collapse () {
         this.expanded = false;
-        this.showExpansion = '';
+        this.detailClassNames = ['details', 'anim-collapse'];
     }
 
     handleClick () {
         this.props.selectCocktail(this.props.idx);
-        this.expand();
+        // this.expand();
     }
 
     render () {
-        this.buildExtras();
+        this.buildDetails();
+        if (this.props.idxExpanded === this.props.idx) {
+            this.expand();
+        } else {
+            this.collapse();
+        }
         return (
-            <div key={`${this.props.idx}`} onClick={this.handleClick}>
+            <div 
+                key={this.props.idx} 
+                onClick={this.handleClick}
+                className={this.classNames.join(' ')}
+            >
             <h1>{this.props.details.name}</h1>
-            {this.showExpansion}
+            {this.details()}
             </div>
         )
     }

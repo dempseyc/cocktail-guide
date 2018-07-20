@@ -1,10 +1,33 @@
-.App {
-  text-align: center;
+body {
+  background: #222222;
+  color: #ddddcc;
+  font-family: 'Zilla Slab', serif;
+  overflow: hidden;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+header {
+  background: #ddddcc;
+  color: #222222;
+}
+
+header h1 {
+  font-size: 2.4rem;
+}
+
+input[type=text] {
+  display: inline-block;
+  font-size: 1rem;
+  color: #ddddcc;
+  border: 5px solid #ddddcc;
+  padding: 2px;
+  padding-left: 7px;
+  margin-left: 30px;
+  background: #666655;
+  margin: 0 0 10px 0;
+}
+
+.App {
+  text-align: center;
 }
 
 .App-header {
@@ -16,13 +39,4 @@
 
 .App-title {
   font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

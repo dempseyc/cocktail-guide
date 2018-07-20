@@ -30,7 +30,8 @@ function buildDrink(i) {
         name: i.strDrink,
         glass: i.strGlass,
         ingredients: processIngredients(),
-        instructions: i.strInstructions
+        instructions: i.strInstructions,
+        image: i.strDrinkThumb
     }
     return drink;
 }
@@ -48,6 +49,7 @@ export function fetchDrinks(query) {
         dispatch(requestDrinks(query))
         return fetch(uri)
         .then(response => response.json())
+        // need receive drinks success, error, etc
         .then(json => dispatch(receiveDrinks(query, json)))
     }
 }
