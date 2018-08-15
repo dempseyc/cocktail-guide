@@ -32,6 +32,9 @@ class App extends Component {
           onSubmit={this.handleSubmit} 
           selectCocktail={this.handleClick}
           drinks={drinksFromAPI}/>
+        <footer>
+          <p>data from www.thecocktaildb.com</p>
+        </footer>
       </div>
 
     );

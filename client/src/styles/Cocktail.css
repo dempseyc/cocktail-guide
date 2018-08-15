@@ -54,7 +54,8 @@ ul {
     background-size: contain;
     box-shadow: 
         0 0 0px 4px #222222,
-        0 0 0px 5px #888877;
+        /* 0 0 0px 5px #888877; */
+        0 0 0px 5px #ddddcc;
     border-radius: 50%;
     margin: 6px;
 }
