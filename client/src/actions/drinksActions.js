@@ -1,6 +1,7 @@
 export const RECEIVE_DRINKS = 'RECEIVE_DRINKS';
 export const REQUEST_DRINKS = 'REQUEST_DRINKS';
 export const EXPAND_DRINK = 'EXPAND_DRINK';
+export const FETCH_DRINKS_FAILURE = 'FETCH_DRINKS_FAILURE';
 
 function receiveDrinks(query, json) {
     return {
@@ -57,8 +58,6 @@ export function fetchDrinks(query) {
         .catch(error => dispatch(fetchDrinksFailure(query, error)))
     }
 }
-
-export const FETCH_DRINKS_FAILURE = 'FETCH_DRINKS_FAILURE';
 
 const fetchDrinksFailure = (query, error) => ({
   type: FETCH_DRINKS_FAILURE,

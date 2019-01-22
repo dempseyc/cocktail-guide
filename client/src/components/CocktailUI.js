@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import Cocktail from './Cocktail.js'
 
 class CocktailUI extends React.Component {
@@ -28,7 +28,7 @@ class CocktailUI extends React.Component {
     }
 
     render () {
-        const { value, onSubmit, drinks, selectCocktail } = this.props;
+        const { onSubmit, drinks, selectCocktail } = this.props;
         const cocktails = this.buildCocktails(drinks, selectCocktail);
         return (
         <div className="cocktail-ui-container">
